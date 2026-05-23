@@ -1,0 +1,59 @@
+@if (flight(); as f) {
+  <header class="booking-header">
+    <h1>Complete your booking</h1>
+    <p class="lead">
+      {{ f.airlineProvider }} · {{ f.flightNumber }} ·
+      {{ f.originAirportCode }} → {{ f.destinationAirportCode }} ·
+      {{ f.departureTime | date:'mediumDate' }} {{ f.departureTime | date:'shortTime' }} →
+      {{ f.arrivalTime | date:'shortTime' }}
+    </p>
+    <p class="lead">
+      $ {{ f.pricePerPassenger | number:'1.2-2' }} × {{ f.numberOfPassengers }} pax =
+      <strong>$ {{ f.totalPrice | number:'1.2-2' }}</strong>
+      · {{ isInternational() ? 'International route' : 'Domestic route' }}
+    </p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="booking-form">
+    @if (submitError()) {
+      <div class="banner banner--error">{{ submitError() }}</div>
+    }
+
+    <section class="card">
+      <h2>Contact</h2>
+      <div class="field">
+        <label for="contactEmail">Contact email</label>
+        <input id="contactEmail" type="email" formControlName="contactEmail" />
+        @if (form.controls['contactEmail'].touched && form.controls['contactEmail'].invalid) {
+          <span class="error">Enter a valid email.</span>
+        }
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Passengers</h2>
+      <div class="passengers">
+        @for (group of passengers.controls; track group) {
+          <app-passenger-form
+            [group]="$any(group)"
+            [index]="$index"
+            [documentLabel]="documentLabel()"
+            [documentHint]="documentHint()"
+            [isInternational]="isInternational()" />
+        }
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="btn btn--secondary" routerLink="/search">Cancel</a>
+      <button type="submit" class="btn" [disabled]="submitting()">
+        {{ submitting() ? 'Booking…' : 'Confirm booking' }}
+      </button>
+    </div>
+  </form>
+} @else {
+  <div class="banner banner--error">
+    {{ submitError() ?? 'Flight not found. Please search again.' }}
+  </div>
+  <a class="btn" routerLink="/search">Back to search</a>
+}

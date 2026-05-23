@@ -1,0 +1,36 @@
+<fieldset [formGroup]="group" class="passenger">
+  <legend>Passenger {{ index + 1 }}</legend>
+
+  <div class="grid">
+    <div class="field">
+      <label [for]="'fullName-' + index">Full name</label>
+      <input [id]="'fullName-' + index" type="text" formControlName="fullName" />
+      @if (group.controls['fullName'].touched && group.controls['fullName'].invalid) {
+        <span class="error">Enter the passenger's full name.</span>
+      }
+    </div>
+
+    <div class="field">
+      <label [for]="'email-' + index">Email</label>
+      <input [id]="'email-' + index" type="email" formControlName="email" />
+      @if (group.controls['email'].touched && group.controls['email'].invalid) {
+        <span class="error">Enter a valid email.</span>
+      }
+    </div>
+
+    <div class="field">
+      <label [for]="'docNumber-' + index">{{ documentLabel }}</label>
+      <input
+        [id]="'docNumber-' + index"
+        type="text"
+        formControlName="documentNumber"
+        [attr.inputmode]="isInternational ? 'text' : 'numeric'"
+        [attr.maxlength]="isInternational ? 9 : 8"
+        [style.text-transform]="isInternational ? 'uppercase' : 'none'" />
+      <span class="hint">{{ documentHint }}</span>
+      @if (documentError(); as msg) {
+        <span class="error">{{ msg }}</span>
+      }
+    </div>
+  </div>
+</fieldset>

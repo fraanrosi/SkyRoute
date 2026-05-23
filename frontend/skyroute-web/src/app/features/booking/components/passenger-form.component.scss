@@ -1,0 +1,23 @@
+.passenger {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem 1.25rem;
+  margin: 0;
+
+  legend {
+    padding: 0 0.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .hint {
+    color: #64748b;
+    font-size: 0.75rem;
+  }
+}

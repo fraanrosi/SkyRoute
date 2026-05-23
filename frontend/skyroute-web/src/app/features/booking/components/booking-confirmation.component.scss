@@ -1,0 +1,59 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+
+    h1 {
+      margin: 0;
+    }
+
+    .reference {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: 1.25rem;
+      color: #0f172a;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__pill {
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    dt {
+      font-size: 0.8rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    dd {
+      margin: 0;
+      font-weight: 600;
+      color: #0f172a;
+    }
+  }
+}

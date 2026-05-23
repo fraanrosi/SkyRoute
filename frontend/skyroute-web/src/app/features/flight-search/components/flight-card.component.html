@@ -1,0 +1,32 @@
+<article class="flight-card card">
+  <header class="flight-card__top">
+    <div class="airline">
+      <span class="airline__provider">{{ flight.airlineProvider }}</span>
+      <span class="airline__number">{{ flight.flightNumber }}</span>
+    </div>
+    <span class="cabin">{{ cabinLabel }}</span>
+  </header>
+
+  <div class="flight-card__times">
+    <div class="time">
+      <strong>{{ flight.departureTime | date:'shortTime' }}</strong>
+      <span>{{ flight.originAirportCode }}</span>
+    </div>
+    <div class="duration">
+      <span class="duration__line"></span>
+      <span class="duration__label">{{ durationLabel }}</span>
+    </div>
+    <div class="time">
+      <strong>{{ flight.arrivalTime | date:'shortTime' }}</strong>
+      <span>{{ flight.destinationAirportCode }}</span>
+    </div>
+  </div>
+
+  <footer class="flight-card__bottom">
+    <div class="price">
+      <span class="price__per">$ {{ flight.pricePerPassenger | number:'1.2-2' }} <small>per passenger</small></span>
+      <span class="price__total">Total: $ {{ flight.totalPrice | number:'1.2-2' }} ({{ flight.numberOfPassengers }} pax)</span>
+    </div>
+    <a class="btn" [routerLink]="['/booking', flight.flightId]">Book</a>
+  </footer>
+</article>

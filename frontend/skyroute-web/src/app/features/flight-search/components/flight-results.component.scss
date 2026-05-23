@@ -1,0 +1,33 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    label {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #334155;
+
+      select {
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 0.35rem 0.5rem;
+        background: #fff;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

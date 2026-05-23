@@ -1,0 +1,29 @@
+<section class="results">
+  @if (error) {
+    <div class="banner banner--error">{{ error }}</div>
+  }
+
+  @if (loading) {
+    <div class="banner banner--info">Searching flights…</div>
+  } @else if (searched && sortedFlights().length === 0) {
+    <div class="banner banner--info">No flights match your search. Try a different route or date.</div>
+  } @else if (sortedFlights().length > 0) {
+    <header class="results__header">
+      <span>{{ sortedFlights().length }} flight(s) found</span>
+      <label>
+        Sort by:
+        <select [value]="sort()" (change)="setSort($any($event.target).value)">
+          @for (opt of sortOptions; track opt.value) {
+            <option [value]="opt.value">{{ opt.label }}</option>
+          }
+        </select>
+      </label>
+    </header>
+
+    <div class="results__list">
+      @for (flight of sortedFlights(); track flight.flightId) {
+        <app-flight-card [flight]="flight" />
+      }
+    </div>
+  }
+</section>

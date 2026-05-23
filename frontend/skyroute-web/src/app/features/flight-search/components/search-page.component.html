@@ -1,0 +1,10 @@
+<h1>Find your flight</h1>
+<p class="lead">Search across SkyRoute's partner airlines and book in seconds.</p>
+
+<app-search-form [loading]="loading()" (searchRequested)="onSearch($event)" />
+
+<app-flight-results
+  [flights]="flights()"
+  [loading]="loading()"
+  [searched]="searched()"
+  [error]="error()" />

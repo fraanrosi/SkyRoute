@@ -1,0 +1,55 @@
+# ---- .NET ----
+bin/
+obj/
+out/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.swp
+.vs/
+.vshistory/
+*.pdb
+*.cache
+*.log
+TestResults/
+[Pp]ackages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.idea/
+*.DotSettings.user
+
+# ---- Node / Angular ----
+node_modules/
+.angular/
+dist/
+tmp/
+coverage/
+.npm
+*.tsbuildinfo
+
+# ---- Editor / OS ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.tmp
+*.bak
+
+# ---- VS Code (keep workspace recommendations) ----
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# ---- Env / secrets ----
+.env
+.env.local
+.env.*.local
+appsettings.Local.json
+
+# ---- Local AI / blueprint notes (kept out of the public repo) ----
+CLAUDE.md
+.claude/
