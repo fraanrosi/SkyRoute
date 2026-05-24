@@ -8,8 +8,8 @@
       {{ f.arrivalTime | date:'shortTime' }}
     </p>
     <p class="lead">
-      $ {{ f.pricePerPassenger | number:'1.2-2' }} × {{ f.numberOfPassengers }} pax =
-      <strong>$ {{ f.totalPrice | number:'1.2-2' }}</strong>
+      USD {{ f.pricePerPassenger | number:'1.2-2' }} × {{ f.numberOfPassengers }} pax =
+      <strong>USD {{ f.totalPrice | number:'1.2-2' }}</strong>
       · {{ isInternational() ? 'International route' : 'Domestic route' }}
     </p>
   </header>

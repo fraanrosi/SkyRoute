@@ -77,19 +77,22 @@
   .price {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.15rem;
 
-    &__per {
+    &__total {
       font-weight: 700;
+      font-size: 1.15rem;
+      color: #0f172a;
       small {
         font-weight: 400;
+        font-size: 0.8rem;
         color: #64748b;
-        margin-left: 0.25rem;
+        margin-left: 0.35rem;
       }
     }
 
-    &__total {
-      color: #475569;
+    &__per {
+      color: #64748b;
       font-size: 0.85rem;
     }
   }

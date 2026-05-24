@@ -20,3 +20,20 @@ export interface BookingResponse {
   totalPriceCharged: number;
   status: BookingStatus;
 }
+
+export interface BookingListItem {
+  bookingReference: string;
+  bookingDate: string;
+  status: BookingStatus;
+  totalPriceCharged: number;
+
+  airlineProvider: string;
+  flightNumber: string;
+
+  originAirportCode: string;
+  destinationAirportCode: string;
+  departureTime: string;
+
+  numberOfPassengers: number;
+  contactEmail: string;
+}

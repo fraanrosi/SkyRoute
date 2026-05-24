@@ -11,4 +11,6 @@ public class InMemoryBookingStore
 
     public Booking? Get(string bookingReference)
         => _bookings.TryGetValue(bookingReference, out var b) ? b : null;
+
+    public IReadOnlyCollection<Booking> GetAll() => _bookings.Values.ToList();
 }

@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { BookingRequest, BookingResponse } from '../models/booking.models';
+import { BookingListItem, BookingRequest, BookingResponse } from '../models/booking.models';
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
@@ -14,5 +14,9 @@ export class BookingService {
 
   getBooking(reference: string): Observable<BookingResponse> {
     return this.http.get<BookingResponse>(`/api/bookings/${encodeURIComponent(reference)}`);
+  }
+
+  getAllBookings(): Observable<BookingListItem[]> {
+    return this.http.get<BookingListItem[]>('/api/bookings');
   }
 }

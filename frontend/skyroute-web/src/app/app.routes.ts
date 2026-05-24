@@ -17,5 +17,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/booking/components/booking-confirmation.component').then(m => m.BookingConfirmationComponent)
   },
+  {
+    path: 'bookings',
+    loadComponent: () =>
+      import('./features/booking/components/bookings-page.component').then(m => m.BookingsPageComponent)
+  },
   { path: '**', redirectTo: 'search' }
 ];

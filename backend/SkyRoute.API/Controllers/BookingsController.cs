@@ -39,4 +39,9 @@ public class BookingsController : ControllerBase
         var response = _bookingService.Get(reference);
         return response is null ? NotFound() : Ok(response);
     }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<BookingListItem>), StatusCodes.Status200OK)]
+    public ActionResult<IEnumerable<BookingListItem>> GetAll()
+        => Ok(_bookingService.GetAll());
 }

@@ -69,6 +69,33 @@ public class BookingService
         return booking is null ? null : ToResponse(booking);
     }
 
+    public IReadOnlyList<BookingListItem> GetAll()
+    {
+        return _bookingStore.GetAll()
+            .Select(ToListItem)
+            .OrderByDescending(b => b.BookingDate)
+            .ToList();
+    }
+
+    private BookingListItem ToListItem(Booking booking)
+    {
+        var flight = _flightStore.Get(booking.FlightId);
+        return new BookingListItem
+        {
+            BookingReference = booking.BookingReference,
+            BookingDate = booking.BookingDate,
+            Status = booking.Status,
+            TotalPriceCharged = booking.TotalPriceCharged,
+            AirlineProvider = flight?.AirlineProvider ?? "Unknown",
+            FlightNumber = flight?.FlightNumber ?? string.Empty,
+            OriginAirportCode = flight?.OriginAirportCode ?? string.Empty,
+            DestinationAirportCode = flight?.DestinationAirportCode ?? string.Empty,
+            DepartureTime = flight?.DepartureTime ?? default,
+            NumberOfPassengers = booking.Passengers.Count,
+            ContactEmail = booking.ContactEmail
+        };
+    }
+
     private static BookingResponse ToResponse(Booking booking) => new()
     {
         BookingReference = booking.BookingReference,
